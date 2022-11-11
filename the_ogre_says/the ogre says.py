@@ -10,7 +10,6 @@ class The_ogre_says: # con esto se va a empezar la clase para poder iniciar el j
   self.arreglo=[]
   self.marcador=0 # la cantidad de puntos que llevamos en este juego 
   self.mayor=0 # puntuación maxima del juegador
-  self.contador=0
   self.juegoI=False
   self.colores=["azul","amarillo","verde","rojo"] # las opciones de colores donde el jugador va a tocar para poder ganar el juego
   self.ventana.title("The_ogre_says")
@@ -39,16 +38,18 @@ class The_ogre_says: # con esto se va a empezar la clase para poder iniciar el j
 
  def presionar(self,color):# este constructor hace que cuando el jugador presione la opcion correcta, hace que incremente un punto en el marcador, asi hasta que pierda
     if self.juegoI==True:
-        if len(self.arreglo) >= self.contador-1:
-            if self.arreglo[self.contador]==color:
-                self.contador+=1
-                if color=="Amarillo":
+        if len(self.arreglo) >= self.marcador-1:
+            print(self.arreglo)
+            print(self.marcador)
+            if self.arreglo[-1]==color:
+                self.marcador+=1
+                if color=="amarillo":
                     self.sonido(600,500)# no todos los cuadors tienen el mismo sonido, asi que para diferenciarlo
-                    if color=="Azul":
+                    if color=="azul":
                         self.sonido(500,500)
-                        if color=="Rojo":
+                        if color=="rojo":
                             self.sonido(700,500)
-                            if color=="Verde":
+                            if color=="verde":
                                 self.sonido(800,500)
                                 self.revisarTurno()
 
@@ -62,27 +63,24 @@ class The_ogre_says: # con esto se va a empezar la clase para poder iniciar el j
       self.mayor=self.marcador
      self.etiqueta.config(text="Marcador: " + str(self.marcador) +"Mayor: " + str(self.mayor))
      self.juegoI=False
-     self.contador=0
      self.marcador=0
      self.arreglo=[]
 
  def iniciar(self):#con esta función se crea la funcion de empezar el juego
-  self.contador=0
   self.marcador=0
   self.arreglo=[]
   self.juegoI=True
   self.crearColor()
 
  def revisarTurno(self):
-  if len(self.arreglo)==self.contador:
-   self.contador=0
+  if len(self.arreglo)==self.mayor:
    self.marcador+=1
    self.iniciar_B.after(1000,self.crearColor)
  def crearColor(self):
   if self.juegoI==True:
    i=0
    while i<len(self.arreglo):
-    if self.arreglo[i]=="Azul":
+    if self.arreglo[i]=="azul":
      self.cambio(self.azul_b,"#6A5ACD","blue",500,500)#se crean el color de  cada uno de los cuadros( en este caso de amarillo, azul, rojo y verde )
 
     if self.arreglo[i]=="amarillo":
@@ -96,19 +94,19 @@ class The_ogre_says: # con esto se va a empezar la clase para poder iniciar el j
     i+=1
     time.sleep(1)
 
-   aleatorio=random.randrange(0,4)
+   aleatorio=random.randrange(0,3)
    self.arreglo.append(self.colores[aleatorio])
 
-   if self.arreglo[i]=="Azul":
+   if self.arreglo[i]=="azul":
      self.cambio(self.azul_b,"#6A5ACD","blue",500,500)# acá se define el color de los cuadros
 
-   if self.arreglo[i]=="Amarillo":
+   if self.arreglo[i]=="amarillo":
      self.cambio(self.amarillo_b,"#FFD700","yellow",600,500)
 
-   if self.arreglo[i]=="Rojo":
+   if self.arreglo[i]=="rojo":
      self.cambio(self.rojo_b,"orange","red",700,500)
 
-   if self.arreglo[i]=="Verde":
+   if self.arreglo[i]=="verde":
      self.cambio(self.verde_b,"#00FF00","green",800,500)
 
 
