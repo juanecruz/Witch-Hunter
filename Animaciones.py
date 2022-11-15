@@ -51,6 +51,7 @@ class Character(pygame.sprite.Sprite):
                 self.rect.x = width
     def shoot(self):
         bala = Bala(self.rect.x+20,self.rect.y)
+        musica_pelea.play()
         self.image = animaciones[13]
         all_sprite_group.add(bala)
         balas.add(bala)
@@ -149,6 +150,7 @@ def crear_lista_animaciones(num_imagenes,factor,carpeta,nombre):
         resize_image = pygame.transform.scale(img,(x/sz,y/sz))
         frames.append(resize_image)
     return frames
+
 width = 1200
 height = 800
 
@@ -176,15 +178,23 @@ all_sprite_group.add(p1)
 diamante = pygame.image.load("assets/Diamante.png")
 
 pygame.init()
+pygame.mixer.init()
+
 screen_size = (1200,800)
 screen = pygame.display.set_mode(screen_size)
 clock = pygame.time.Clock()
 score = 0
-vidas = crear_vidas(3)
+vidas = crear_vidas(5)
 pos_vidas_x = width - 100
 pos_vidas_y = height
-fondo = pygame.image.load("assets/fondo.png")
 
+fondo = pygame.image.load("assets/fondo.png")
+musica = pygame.mixer.Sound("Audio/night-run-125181.mp3")
+musica_pelea = pygame.mixer.Sound("Audio/laser5.ogg")
+dano = pygame.mixer.Sound("Audio/Daño.mp3")
+
+
+musica.play()
 lose = False
 
 
@@ -208,6 +218,7 @@ while not lose:
         crear_gema()
     h = pygame.sprite.spritecollide(p1,acid,True)
     if h:
+        dano.play()
         del vidas[0]
     if len(vidas) <= 0:
         lose = True
@@ -227,4 +238,4 @@ while not lose:
             enemies.add(e1)
     #Refrescar Pantalla
     pygame.display.flip()
-    clock.tick(120)
+    clock.tick(60)
