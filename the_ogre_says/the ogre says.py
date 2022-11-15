@@ -14,7 +14,7 @@ class The_ogre_says: # con esto se va a empezar la clase para poder iniciar el j
   self.juegoI=False
   self.colores=["azul","amarillo","verde","rojo"] # las opciones de colores donde el jugador va a tocar para poder ganar el juego
   self.ventana.title("The_ogre_says")
-  self.ventana.geometry("500x500")
+  self.ventana.geometry("400x400")
   self.iniciar_B()
   self.ventana.mainloop()
 
