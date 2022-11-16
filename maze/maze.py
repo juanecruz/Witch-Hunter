@@ -1,13 +1,13 @@
 import pygame
 pygame.init()
  
-class Pared(pygame.sprite.Sprite): #con esto se crea 
+class Pared(pygame.sprite.Sprite): #con esto se crea la pared para que el mago no pase 
     def __init__(self):
         super().__init__()
         self.image = pygame.image.load("Muro.png").convert()
         self.rect=self.image.get_rect()
          
-class Mago(pygame.sprite.Sprite): #Cargamos imagen sprite
+class Mago(pygame.sprite.Sprite): #Cargamos imagen sprite #con esto creamos el mago
     def __init__(self):
         super().__init__()
         self.image = pygame.image.load("Mago_camiando1.png").convert_alpha()
@@ -27,7 +27,7 @@ def construir_mapa(mapa): #Creamos una lista de rectángulos a partir de una lis
         y+=80
     return listaMuros        
  
-def dibujar_muro(superficie, rectangulo): #Dibujamos un rectángulo
+def dibujar_muro(superficie, rectangulo): #Dibujamos un rectángulo 
     pygame.draw.rect(superficie, VERDE, rectangulo)
  
 def dibujar_mapa(superficie, listaMuros): #Dibujamos listaMuros con los rectángulos muro
@@ -80,7 +80,7 @@ while not gameOver:
         if event.type == pygame.QUIT:
             gameOver=True
              
-        if event.type==pygame.KEYDOWN:
+        if event.type==pygame.KEYDOWN: #con esto
             if event.key == pygame.K_LEFT:
                 vel=-5
             elif event.key == pygame.K_RIGHT:
