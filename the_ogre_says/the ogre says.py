@@ -34,23 +34,24 @@ class The_ogre_says: # con esto se va a empezar la clase para poder iniciar el j
   self.start_b=Button(self.ventana,command=self.iniciar, height=2,width=7,bg="white",text="Iniciar")
   self.start_b.place(x=175,y=40)
 
-  self.etiqueta=Label(self.ventana,text="Marcador: 0 Mayor: 0")
+  self.etiqueta=Label(self.ventana,text="Marcador: 0  Mayor: 0")
   self.etiqueta.place(x=40,y=30)
 
  def presionar(self,color):# este constructor hace que cuando el jugador presione la opcion correcta, hace que incremente un punto en el marcador, asi hasta que pierda
-    if self.juegoI==True:
+    while self.juegoI==True:
         if len(self.arreglo) >= self.contador-1:
-            if self.arreglo[self.contador]==color:
-                self.contador+=1
-                if color=="Amarillo":
-                    self.sonido(600,500)# no todos los cuadors tienen el mismo sonido, asi que para diferenciarlo
-                    if color=="Azul":
-                        self.sonido(500,500)
-                        if color=="Rojo":
-                            self.sonido(700,500)
-                            if color=="Verde":
-                                self.sonido(800,500)
-                                self.revisarTurno()
+             self.arreglo[self.contador]==color
+        else:
+            self.contador +=1
+        if color=="amarillo":
+            self.sonido(600,500)# no todos los cuadors tienen el mismo sonido, asi que para diferenciarlo
+        if color=="azul":
+            self.sonido(500,500)
+        if color=="rojo":
+            self.sonido(700,500)
+        if color=="verde":
+            self.sonido(800,500)
+            self.revisarTurno()
 
         self.etiqueta.config(text="Marcador: " + str(self.marcador) +"Mayor: " + str(self.mayor)) # cantidad de puntos que hemos hecho y el record nuestro
 
