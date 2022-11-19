@@ -1,4 +1,4 @@
-# COLOReS (r, g, b)
+# COLORES (r, g, b)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 DARKGREY = (40, 40, 40)
