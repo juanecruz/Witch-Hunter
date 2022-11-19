@@ -1,0 +1,23 @@
+Modulo persosnaje.py
+Clases:
+Personaje: esta clase rescibe como argumentos el ancho y alto de la ventana, el grupo de todos los sprites y el grupo que contiene los objetos de tipo Laser.
+    Funciones: instancia un objeto del tipo Personaje, que puede realizar las funciones basicas como caminar y disparar.
+Murcielago: esta clase rescibe como argumentos el ancho y alto de la ventana, el grupo de todos los sprites y el grupo que contiene los objetos de tipo acid_ball.
+    Funciones: instancia un objeto del tipo Murcielago, que dispara, y deja una gema al morir.
+
+Modulo proyectiles.py
+Clases:
+Laser: esta clase rescibe como argumentos su posición en x e y.
+    Funciones: instancia un objeto del tipo Laser, que cambia de posición en y hasta colisionar con un objeto del tipo Murcielago o salir de la pantalla.
+acid_ball: esta clase rescibe como argumentos su posición en x e y.
+    Funciones: instancia un objeto del tipo acid_ball, que cambia de posición en y hasta colisionar con un objeto del tipo Personaje o salir de la pantalla.
+
+Modulo manejo_imagenes.py
+Funciones:
+crear_lista_animaciones: esta clase rescibe como argumentos el numero de imagenes que componen la animación, un factor de reducción de tamaño, el nombre
+de la carpeta de ubicación, y el nombre de los archivos. Retorna una lista con las imagenes que componen la animación.
+
+    Nota: el nombre de los archivos debe estar compuesto por una sola palabra separada con un guion bajo y una enumeración del 1 hasta n EJEMPLO: "Murcielago_1.png"
+
+resize_image: esta función recibe como argumentos una imagen y un factor de reducción y retorna la misma imagen con menor tamaño.
+
