@@ -1,10 +1,10 @@
 import pygame,sys,win
-from settings import *
+from settings import * #settings hace parte del simon dice 
 from sprites import *
 import random
 
 
-class Game:
+class Game: #acá se dara los contructores
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -23,19 +23,19 @@ class Game:
             Button(330, 270, DARKGREEN),
         ]
 
-    def get_high_score(self):
+    def get_high_score(self): # donde se marca el puntaje maximo
         with open("high_score.txt", "r") as file:
             score = file.read()
         return int(score)
 
-    def save_score(self):
+    def save_score(self): #guardar el puntaje
         with open("high_score.txt", "w") as file:
             if self.score > self.high_score:
                 file.write(str(self.score))
             else:
                 file.write(str(self.high_score))
 
-    def new(self):
+    def new(self): #cada vezque se inicia o se reinicie la partida esta funcion sirve para esto
         self.waiting_input = False
         self.pattern = []
         self.current_step = 0
@@ -81,7 +81,7 @@ class Game:
                 self.save_score()
                 self.playing = False
 
-    def button_animation(self, colour):
+    def button_animation(self, colour): 
         for i in range(len(self.colours)):
             if self.colours[i] == colour:
                 sound = self.beeps[i]
@@ -102,7 +102,7 @@ class Game:
                 self.clock.tick(FPS)
         self.screen.blit(original_surface, (0, 0))
 
-    def game_over_animation(self):
+    def game_over_animation(self): #cada vez que pierda utiliza en 
         original_surface = self.screen.copy()
         flash_surface = pygame.Surface((self.screen.get_size()))
         flash_surface = flash_surface.convert_alpha()
@@ -119,14 +119,14 @@ class Game:
                     self.clock.tick(FPS)
         sys.exit()
 
-    def draw(self):
+    def draw(self): # se forma los cuadrados
         self.screen.fill(BGCOLOUR)
         UIElement(300, 20, f"Score: {str(self.score)}").draw(self.screen)
         for button in self.buttons:
             button.draw(self.screen)
         pygame.display.update()
 
-    def events(self):
+    def events(self): # acá es para salir del juego
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
