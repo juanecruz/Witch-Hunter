@@ -1,4 +1,4 @@
-# COLORS (r, g, b)
+# COLOReS (r, g, b)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 DARKGREY = (40, 40, 40)
@@ -13,7 +13,7 @@ YELLOW = (255, 255, 0)
 DARKYELLOW = (155, 155, 0)
 BGCOLOUR = DARKGREY
 
-# game settings
+# configuracion del juego
 WIDTH = 640
 HEIGHT = 500
 FPS = 60
