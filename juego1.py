@@ -179,7 +179,7 @@ def main():
                 enemigo = personajes.Murcielago(acid,all_sprite_group)
                 all_sprite_group.add(enemigo)
                 murcielagos.add(enemigo)
-        if score >= 500:
+        if score >= 7000:
             win = True
         #Refrescar Pantalla
         pygame.display.flip()

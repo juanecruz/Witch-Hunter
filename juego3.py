@@ -49,7 +49,7 @@ class Game:
             self.events()
             self.draw()
             self.update()
-            if self.score >= 3:
+            if self.score >= 8:
                 win.main()
 
 
